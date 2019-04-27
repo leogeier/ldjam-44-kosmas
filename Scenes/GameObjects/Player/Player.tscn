@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/testSprite.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.02501, 8.1047 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 35.2964, 33.6454 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.267433, 7.98921 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.345417, 0.155647 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -0.827545, 8.56143 )
+current = true
+
