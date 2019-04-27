@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
-var ModuleTypeNamed = preload("res://Resources/Scripts/Modules/ModuleTypeNamed.gd")
+var ModuleTypeParticles = preload("res://Resources/Scripts/Modules/ModuleTypeParticles.gd")
 var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 
 # Declare member variables here. Examples:
@@ -15,9 +15,9 @@ var moduleQueue = ModuleQueue.new()
 func _ready():
 	add_to_group("players")
 	
-	moduleQueue.push_module(ModuleTypeNamed.new("A"))
-	moduleQueue.push_module(ModuleTypeNamed.new("B"))
-	moduleQueue.push_module(ModuleTypeNamed.new("C"))
+	moduleQueue.push_module(ModuleTypeParticles.new())
+	moduleQueue.push_module(ModuleTypeParticles.new())
+	moduleQueue.push_module(ModuleTypeParticles.new())
 	pass # Replace with function body.
 
 func handle_input():
