@@ -33,4 +33,4 @@ func attack():
 
 func _physics_process(delta):
 	handle_input()
-	move_and_slide(direction * speed)
+	move_and_slide(direction.normalized() * speed)
