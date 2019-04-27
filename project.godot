@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Object",
+"class": "ModuleQueue",
+"language": "GDScript",
+"path": "res://Resources/Scripts/ModuleQueue.gd"
+}, {
+"base": "Object",
 "class": "ModuleType",
 "language": "GDScript",
 "path": "res://Resources/Scripts/ModuleType.gd"
 } ]
 _global_script_class_icons={
+"ModuleQueue": "",
 "ModuleType": ""
 }
 

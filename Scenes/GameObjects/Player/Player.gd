@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
 var ModuleType = preload("res://Resources/Scripts/ModuleType.gd")
+var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,7 +10,10 @@ var ModuleType = preload("res://Resources/Scripts/ModuleType.gd")
 var speed = 250
 var direction = Vector2()
 
+var moduleQueue =  ModuleQueue.new()
+
 func _ready():
+	moduleQueue.push_module(ModuleType.new())
 	pass # Replace with function body.
 
 func handle_input():
@@ -29,12 +33,15 @@ func handle_input():
 		attack()
 
 func attack():
+	if moduleQueue.is_empty():
+		return
+	
 	var viewportPos = get_global_transform_with_canvas().get_origin()
 	var mouseViewportPos = get_viewport().get_mouse_position()
 	var attackDir = (mouseViewportPos - viewportPos).normalized()
 	
 	var module = Module.instance()
-	module.set_module_type(ModuleType.new())
+	module.set_module_type(moduleQueue.pop_module())
 	get_owner().add_child(module)
 	module.throwFromTo(position, get_global_mouse_position())
 
