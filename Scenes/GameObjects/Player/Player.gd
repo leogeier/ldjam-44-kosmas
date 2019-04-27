@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -29,7 +31,10 @@ func attack():
 	var viewportPos = get_global_transform_with_canvas().get_origin()
 	var mouseViewportPos = get_viewport().get_mouse_position()
 	var attackDir = (mouseViewportPos - viewportPos).normalized()
-	print(attackDir)
+	
+	var module = Module.instance()
+	get_owner().add_child(module)
+	module.throwFromTo(position, get_global_mouse_position())
 
 func _physics_process(delta):
 	handle_input()
