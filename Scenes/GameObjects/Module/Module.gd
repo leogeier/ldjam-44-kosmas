@@ -14,6 +14,7 @@ func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
 
 func _physics_process(delta):
 	if not reachedEnd:
+		rotate(0.1)
 		direction = (endPos - position).normalized()
 		var velocity = direction * speed
 		var distanceFromEnd = (position - endPos).length()
