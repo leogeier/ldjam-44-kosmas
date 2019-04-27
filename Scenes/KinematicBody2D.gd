@@ -26,7 +26,10 @@ func handle_input():
 		attack()
 
 func attack():
-	print("Attacking")
+	var viewportPos = get_global_transform_with_canvas().get_origin()
+	var mouseViewportPos = get_viewport().get_mouse_position()
+	var attackDir = (mouseViewportPos - viewportPos).normalized()
+	print(attackDir)
 
 func _physics_process(delta):
 	handle_input()
