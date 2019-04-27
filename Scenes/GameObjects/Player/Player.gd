@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
-var ModuleType = preload("res://Resources/Scripts/ModuleType.gd")
+var ModuleType = preload("res://Resources/Scripts/Modules/ModuleTypeBase.gd")
 var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 
 # Declare member variables here. Examples:
