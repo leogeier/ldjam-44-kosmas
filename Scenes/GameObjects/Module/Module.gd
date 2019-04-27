@@ -16,10 +16,12 @@ func _physics_process(delta):
 	if not reachedEnd:
 		rotate(0.1)
 		direction = (endPos - position).normalized()
-		var velocity = direction * speed
+		var velocity = direction * speed * delta
 		var distanceFromEnd = (position - endPos).length()
-		if (velocity * delta).length() < distanceFromEnd:
-			move_and_slide(velocity)
+		if velocity.length() < distanceFromEnd:
+			var collision = move_and_collide(velocity)
+			if collision != null:
+				reachedEnd = true
 		else:
 			position = endPos
 			reachedEnd = true
