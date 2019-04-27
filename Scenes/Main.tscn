@@ -5,6 +5,7 @@
 [ext_resource path="res://Resources/Sprites/testSprite.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.02501, 8.1047 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,7 +20,7 @@ position = Vector2( 35.2964, 33.6454 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0.159264, 0.214981 )
+position = Vector2( 0.327557, 0.172909 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
