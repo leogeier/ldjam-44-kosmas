@@ -26,7 +26,8 @@ func is_collectable():
 	return reachedEnd
 
 func collectBy(player):
-	print("COLLECTED")
+	player.collectModule(moduleType)
+	get_parent().remove_child(self)
 
 func _physics_process(delta):
 	if not reachedEnd:
