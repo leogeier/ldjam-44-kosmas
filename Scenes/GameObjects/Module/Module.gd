@@ -10,6 +10,9 @@ var reachedEnd = true
 func set_module_type(newModuleType: ModuleType):
 	moduleType = newModuleType
 
+func get_module_type():
+	return moduleType
+
 func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
 	position = newStartPos
 	endPos = newEndPos
@@ -18,6 +21,12 @@ func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
 func endThrow():
 	reachedEnd = true
 	moduleType.activateEffect()
+
+func is_collectable():
+	return reachedEnd
+
+func collectBy(player):
+	print("COLLECTED")
 
 func _physics_process(delta):
 	if not reachedEnd:

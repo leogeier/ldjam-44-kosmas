@@ -10,9 +10,13 @@ var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 var speed = 250
 var direction = Vector2()
 
-var moduleQueue =  ModuleQueue.new()
+var moduleQueue = ModuleQueue.new()
 
 func _ready():
+	add_to_group("players")
+	
+	moduleQueue.push_module(ModuleType.new())
+	moduleQueue.push_module(ModuleType.new())
 	moduleQueue.push_module(ModuleType.new())
 	pass # Replace with function body.
 
