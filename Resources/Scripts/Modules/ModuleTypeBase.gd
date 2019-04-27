@@ -1,6 +1,6 @@
 extends Object
 
-class_name ModuleType
+class_name ModuleTypeBase
 
 func activateEffect():
 	print("Base ModuleType Effect")

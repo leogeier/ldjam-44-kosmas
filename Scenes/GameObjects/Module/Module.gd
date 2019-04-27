@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
-var moduleType: ModuleType
+var moduleType: ModuleTypeBase
 
 var direction = Vector2()
 var speed = 250
 var endPos = Vector2()
 var reachedEnd = true
 
-func set_module_type(newModuleType: ModuleType):
+func set_module_type(newModuleType: ModuleTypeBase):
 	moduleType = newModuleType
 
 func get_module_type():

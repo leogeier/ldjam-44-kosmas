@@ -49,7 +49,7 @@ func attack():
 	get_owner().add_child(module)
 	module.throwFromTo(position, get_global_mouse_position())
 
-func collectModule(moduleType: ModuleType):
+func collectModule(moduleType: ModuleTypeBase):
 	moduleQueue.push_module(moduleType)
 
 func _physics_process(delta):

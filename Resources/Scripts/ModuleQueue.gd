@@ -4,7 +4,7 @@ class_name ModuleQueue
 
 var modules = []
 
-func push_module(module: ModuleType):
+func push_module(module: ModuleTypeBase):
 	modules.push_back(module)
 
 func pop_module():

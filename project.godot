@@ -15,13 +15,13 @@ _global_script_classes=[ {
 "path": "res://Resources/Scripts/ModuleQueue.gd"
 }, {
 "base": "Object",
-"class": "ModuleType",
+"class": "ModuleTypeBase",
 "language": "GDScript",
 "path": "res://Resources/Scripts/Modules/ModuleTypeBase.gd"
 } ]
 _global_script_class_icons={
 "ModuleQueue": "",
-"ModuleType": ""
+"ModuleTypeBase": ""
 }
 
 [application]
