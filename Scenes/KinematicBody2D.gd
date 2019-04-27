@@ -10,6 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func handle_input():
+	# Movement
 	direction = Vector2()
 	if Input.is_action_pressed('ui_right'):
 		direction.x = 1
@@ -19,6 +20,13 @@ func handle_input():
 		direction.y = 1
 	if Input.is_action_pressed('ui_up'):
 		direction.y = -1
+	
+	# Module throw
+	if Input.is_action_just_pressed("attack"):
+		attack()
+
+func attack():
+	print("Attacking")
 
 func _physics_process(delta):
 	handle_input()
