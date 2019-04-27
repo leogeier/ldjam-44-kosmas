@@ -1,16 +1,23 @@
 extends KinematicBody2D
 
-var moduleType
+var moduleType: ModuleType
 
 var direction = Vector2()
 var speed = 250
 var endPos = Vector2()
 var reachedEnd = true
 
+func set_module_type(newModuleType: ModuleType):
+	moduleType = newModuleType
+
 func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
 	position = newStartPos
 	endPos = newEndPos
 	reachedEnd = false
+
+func endThrow():
+	reachedEnd = true
+	moduleType.activateEffect()
 
 func _physics_process(delta):
 	if not reachedEnd:
@@ -21,7 +28,7 @@ func _physics_process(delta):
 		if velocity.length() < distanceFromEnd:
 			var collision = move_and_collide(velocity)
 			if collision != null:
-				reachedEnd = true
+				endThrow()
 		else:
 			position = endPos
-			reachedEnd = true
+			endThrow()

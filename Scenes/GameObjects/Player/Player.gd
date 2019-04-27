@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
+var ModuleType = preload("res://Resources/Scripts/ModuleType.gd")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -33,6 +34,7 @@ func attack():
 	var attackDir = (mouseViewportPos - viewportPos).normalized()
 	
 	var module = Module.instance()
+	module.set_module_type(ModuleType.new())
 	get_owner().add_child(module)
 	module.throwFromTo(position, get_global_mouse_position())
 
