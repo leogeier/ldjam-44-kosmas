@@ -27,3 +27,7 @@ shape = SubResource( 1 )
 position = Vector2( 0.345417, 0.155647 )
 texture = ExtResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+position = Vector2( -0.827545, 8.56143 )
+current = true
+
