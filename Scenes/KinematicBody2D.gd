@@ -9,7 +9,7 @@ var direction = Vector2()
 func _ready():
 	pass # Replace with function body.
 
-func _physics_process(delta):
+func handle_input():
 	direction = Vector2()
 	if Input.is_action_pressed('ui_right'):
 		direction.x = 1
@@ -19,4 +19,7 @@ func _physics_process(delta):
 		direction.y = 1
 	if Input.is_action_pressed('ui_up'):
 		direction.y = -1
+
+func _physics_process(delta):
+	handle_input()
 	move_and_slide(direction * speed)
