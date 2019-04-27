@@ -18,6 +18,14 @@ _global_script_class_icons={
 config/name="Ldjam-44"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=480
+window/size/height=320
+window/size/fullscreen=true
+window/size/test_width=960
+window/size/test_height=640
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
