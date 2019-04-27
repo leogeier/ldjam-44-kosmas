@@ -3,37 +3,59 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (int) var SPEED = 150
-var IsAlreadyKilled = false
+#export (int) var SPEED = 5
+#var motion = Vector2(0,0)
+#var IsAlreadyKilled = false
+#export (bool) var Optimize_Path = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.play("Idle")
+	#$Sprite.play("Idle")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !IsAlreadyKilled:
-		
-	else:
-		$Sprite.play("Death")
+	print("Test")
 	pass
+#	basicMovement()
+#	if !IsAlreadyKilled:		#Is alive
+#	print("Module Checking")
+#		var ShortestPath = null
+#		var ModuleList = get_tree().get_node("Module_Container").get_child_count()
+#		print("Iterating through Modules")
+#		for i in range(ModuleList.size()):
+#			print("Module: ",i)
+#			var TempPath = get_node("Navigation2D").get_simple_path( get_global_position(), ModuleList[i].get_global_position(), Optimize_Path)
+#			if((ShortestPath == null) || ( ShortestPath.size() > TempPath.size())):
+#				ShortestPath = TempPath
+#
+#
+#
+#		$Sprite.play("Idle")
+#	else:						#Is dead
+#		$Sprite.play("Death")
+#	pass
 	
-	func basicMovement():
-	if Input.is_action_pressed("ui_right"):
-		motion.x = SPEED
-		$Sprite.flip_h = true
-		$Sprite.play("Run")
-		#keep track of last keystroke
-		if !is_on_wall():
-			lastKey = 1
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = -SPEED
-		$Sprite.flip_h = false
-		$Sprite.play("Run")
-		#keep track of last keystroke
-		if !is_on_wall():
-			lastKey = 2
+#func basicMovement():
+#	move_and_slide(motion)
+
+
+
+#func ClosestModule(location):
+#	print("Closest Path Started")
+#	var ClosestPath = -5
+#	var TempPath
+#	print("Modules in Play:", ModuleCount)
+#	for i in range(ModuleCount):		#Find closest Node
+#		TempPath = get_simple_path(location, ModuleCount[i].global_position, Optimize_Path)
+#
+#		if((ClosestPath != -5) && (ClosestPath.size() > TempPath.size())):
+#			ClosestPath = TempPath
+#			#Update Path
+#	return ClosestPath
+#	pass
+
+
 
 
 #extends KinematicBody2D
