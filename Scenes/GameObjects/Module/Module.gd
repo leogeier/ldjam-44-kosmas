@@ -6,6 +6,7 @@ var direction = Vector2()
 var velocity = Vector2()
 var speed = 350
 var reachedEnd = true
+onready var TweenNode = get_node("Tween")
 
 func set_module_type(newModuleType: ModuleTypeBase):
 	moduleType = newModuleType
@@ -20,10 +21,12 @@ func throwTowards(startPoint: Vector2, newDirection: Vector2):
 	direction = newDirection
 	reachedEnd = false
 	velocity = direction * speed
+	TweenNode.interpolate_property(self, "velocity", null, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 
 func endThrow():
 	reachedEnd = true
 	moduleType.activateEffect(self)
+	TweenNode.remove_all()
 
 func is_collectable():
 	return reachedEnd
