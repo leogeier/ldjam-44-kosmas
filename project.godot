@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Scripts/Modules/ModuleTypeNamed.gd"
 }, {
-"base": "Node2D",
+"base": "Object",
 "class": "ModuleTypeParticles",
 "language": "GDScript",
 "path": "res://Resources/Scripts/Modules/ModuleTypeParticles.gd"

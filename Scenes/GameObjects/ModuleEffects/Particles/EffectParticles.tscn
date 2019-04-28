@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/GameObjects/ModuleEffects/Particles/EffectParticles.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 3.06
+explosiveness = 0.8
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 44.01
+angular_velocity = 332.91
+angular_velocity_random = 0.99
+scale_amount = 3.0
+scale_amount_random = 0.65
+

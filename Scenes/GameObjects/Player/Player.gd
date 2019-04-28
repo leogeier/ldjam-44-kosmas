@@ -16,7 +16,6 @@ var moduleQueue = ModuleQueue.new()
 func _ready():
 	add_to_group("players")
 	
-	moduleQueue.push_module(ModuleTypeBase.new())
 	moduleQueue.push_module(ModuleTypeParticles.new())
 	moduleQueue.push_module(ModuleTypeParticles.new())
 	moduleQueue.push_module(ModuleTypeParticles.new())

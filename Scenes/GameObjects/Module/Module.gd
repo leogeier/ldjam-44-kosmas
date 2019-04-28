@@ -20,7 +20,7 @@ func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
 
 func endThrow():
 	reachedEnd = true
-	moduleType.activateEffect()
+	moduleType.activateEffect(self)
 
 func is_collectable():
 	return reachedEnd
