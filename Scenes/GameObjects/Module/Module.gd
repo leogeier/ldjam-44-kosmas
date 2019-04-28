@@ -10,6 +10,9 @@ var startAngularSpeed = 0
 var reachedEnd = true
 onready var TweenNode = get_node("Tween")
 
+func _ready():
+	add_to_group("RaiderTargets")
+
 func set_module_type(newModuleType: ModuleTypeBase):
 	moduleType = newModuleType
 	get_node("Sprite").set_texture(load(moduleType.get_sprite_path()))
@@ -51,3 +54,9 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity * delta)
 		if collision != null:
 			endThrow()
+			
+func steal():
+	hide()
+	queue_free()
+	return get_module_type()
+	
