@@ -48,7 +48,6 @@ frames = SubResource( 2 )
 animation = "Down"
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0.345417, 0.155647 )
 texture = ExtResource( 2 )
 
