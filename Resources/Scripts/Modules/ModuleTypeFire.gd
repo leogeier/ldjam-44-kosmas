@@ -7,7 +7,7 @@ class_name ModuleTypeFire
 var fireEffectNode
 
 func _init():
-	spritePath = "res://Resources/Sprites/testModuleSprite2.png"
+	spritePath = "res://Resources/Sprites/Modul/Modul 2/Modul-3.png.png"
 
 func start_effect(moduleNode: Node2D):
 	fireEffectNode = EffectFire.instance()

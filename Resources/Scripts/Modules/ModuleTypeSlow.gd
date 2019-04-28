@@ -7,7 +7,7 @@ class_name ModuleTypeSlow
 var slowEffectNode
 
 func _init():
-	spritePath = "res://Resources/Sprites/testModuleSprite2.png"
+	spritePath = "res://Resources/Sprites/Modul/Modul 1/Modul-1.png.png"
 
 func start_effect(moduleNode: Node2D):
 	slowEffectNode = EffectSlow.instance()
