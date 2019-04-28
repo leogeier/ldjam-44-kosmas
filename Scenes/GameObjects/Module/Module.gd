@@ -56,7 +56,6 @@ func _physics_process(delta):
 			endThrow()
 			
 func steal():
-	hide()
-	queue_free()
+	get_parent().remove_child(self)
 	return get_module_type()
 	
