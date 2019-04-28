@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/testSprite.png-6ae9488eaeea793f46d63f20a742e602.stex"
+path="res://.import/SandTiles.png-392bccd7d2e55178c00aae9ad31475fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/testSprite.png"
-dest_files=[ "res://.import/testSprite.png-6ae9488eaeea793f46d63f20a742e602.stex" ]
+source_file="res://Resources/Tilemaps/SandTiles.png"
+dest_files=[ "res://.import/SandTiles.png-392bccd7d2e55178c00aae9ad31475fe.stex" ]
 
 [params]
 

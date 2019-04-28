@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/GameObjects/Module/Area2D.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.99658, 8.10483 )
+extents = Vector2( 7, 7 )
 
 [node name="Module" type="KinematicBody2D"]
 collision_layer = 4
@@ -26,5 +26,4 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
-
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

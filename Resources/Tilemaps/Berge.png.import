@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/testSprite.png-6ae9488eaeea793f46d63f20a742e602.stex"
+path="res://.import/Berge.png-77eb2370fa562df84ae177eebefaf9fd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/testSprite.png"
-dest_files=[ "res://.import/testSprite.png-6ae9488eaeea793f46d63f20a742e602.stex" ]
+source_file="res://Resources/Tilemaps/Berge.png"
+dest_files=[ "res://.import/Berge.png-77eb2370fa562df84ae177eebefaf9fd.stex" ]
 
 [params]
 

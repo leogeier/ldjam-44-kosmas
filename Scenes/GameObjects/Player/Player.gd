@@ -15,6 +15,7 @@ var moduleQueue = ModuleQueue.new()
 
 func _ready():
 	add_to_group("players")
+	add_to_group("RaiderTargets")
 	
 	moduleQueue.push_module_type(ModuleTypeSlow.new())
 	moduleQueue.push_module_type(ModuleTypeSlow.new())
@@ -53,3 +54,11 @@ func collectModule(moduleType: ModuleTypeBase):
 func _physics_process(delta):
 	handle_input()
 	move_and_slide(direction.normalized() * speed)
+	
+	
+#Henrik Functions
+func steal():
+	return moduleQueue.pop_module_type()				#Only temporary
+	
+func is_collectable():
+	return true
