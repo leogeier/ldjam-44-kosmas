@@ -1,37 +1,58 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/GameObjects/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/testSprite.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/seite/Roboter-3.png.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/seite/Roboter-4.png.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/seite/Roboter-5.png.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/seite/Roboter-6.png.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Roboter/stehen/rücken/Roboter-13.png.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/rücken/Roboter-15.png.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/rücken/Roboter-16.png.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/rücken/Roboter-17.png.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/rücken/Roboter-18.png.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/front/Roboter-9.png.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/front/Roboter-10.png.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/front/Roboter-11.png.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/Roboter/laufen/front/Roboter-12.png.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Sprites/Roboter/stehen/seite/Roboter-1.png.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Sprites/Roboter/stehen/front/Roboter-7.png.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Sprites/testSprite.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Audio/Test.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.73257, 7.98921 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Side",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "UpIdle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Up",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [  ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "Down",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "SideIdle",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "Right",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "Left",
-"speed": 5.0
+"name": "DownIdle",
+"speed": 10.0
 } ]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -45,13 +66,19 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.345417, 0.155647 )
 frames = SubResource( 2 )
-animation = "Down"
+animation = "UpIdle"
+playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0.345417, 0.155647 )
-texture = ExtResource( 2 )
+texture = ExtResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -0.827545, 8.56143 )
 current = true
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 18 )
