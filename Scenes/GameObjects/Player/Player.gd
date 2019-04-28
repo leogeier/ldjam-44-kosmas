@@ -19,8 +19,11 @@ func _ready():
 	add_to_group("RaiderTargets")
 	
 	moduleQueue.push_module_type(ModuleTypeFire.new())
+	moduleQueue.push_module_type(ModuleTypeSlow.new())
 	moduleQueue.push_module_type(ModuleTypeFire.new())
+	moduleQueue.push_module_type(ModuleTypeSlow.new())
 	moduleQueue.push_module_type(ModuleTypeFire.new())
+	moduleQueue.push_module_type(ModuleTypeSlow.new())
 	pass # Replace with function body.
 
 func handle_input():

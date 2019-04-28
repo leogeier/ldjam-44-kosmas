@@ -82,3 +82,4 @@ current = true
 
 [node name="1" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 18 )
+
