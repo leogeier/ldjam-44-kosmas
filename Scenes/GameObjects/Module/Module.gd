@@ -21,7 +21,8 @@ func throwTowards(startPoint: Vector2, newDirection: Vector2):
 	direction = newDirection
 	reachedEnd = false
 	velocity = direction * speed
-	TweenNode.interpolate_property(self, "velocity", null, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	TweenNode.interpolate_property(self, "velocity", velocity, Vector2(0,0), 1, Tween.TRANS_SINE, Tween.EASE_OUT)
+	TweenNode.start()
 
 func endThrow():
 	reachedEnd = true
@@ -38,12 +39,11 @@ func collectBy(player):
 
 func _physics_process(delta):
 	if not reachedEnd:
+		if velocity.length() == 0:
+			endThrow()
+		
 		rotate(0.1)
 		
-		velocity *= 0.98
-		if velocity.length() > 50:
-			var collision = move_and_collide(velocity * delta)
-			if collision != null:
-				endThrow()
-		else:
+		var collision = move_and_collide(velocity * delta)
+		if collision != null:
 			endThrow()
