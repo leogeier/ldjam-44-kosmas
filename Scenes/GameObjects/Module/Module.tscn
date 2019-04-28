@@ -26,5 +26,4 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
-
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
