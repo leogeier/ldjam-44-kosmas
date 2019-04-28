@@ -3,8 +3,8 @@ extends KinematicBody2D
 var moduleType: ModuleTypeBase
 
 var direction = Vector2()
-var speed = 250
-var endPos = Vector2()
+var velocity = Vector2()
+var speed = 350
 var reachedEnd = true
 
 func set_module_type(newModuleType: ModuleTypeBase):
@@ -14,10 +14,12 @@ func set_module_type(newModuleType: ModuleTypeBase):
 func get_module_type():
 	return moduleType
 
-func throwFromTo(newStartPos: Vector2, newEndPos: Vector2):
-	position = newStartPos
-	endPos = newEndPos
+# newDirection should be normalized
+func throwTowards(startPoint: Vector2, newDirection: Vector2):
+	position = startPoint
+	direction = newDirection
 	reachedEnd = false
+	velocity = direction * speed
 
 func endThrow():
 	reachedEnd = true
@@ -34,13 +36,11 @@ func collectBy(player):
 func _physics_process(delta):
 	if not reachedEnd:
 		rotate(0.1)
-		direction = (endPos - position).normalized()
-		var velocity = direction * speed * delta
-		var distanceFromEnd = (position - endPos).length()
-		if velocity.length() < distanceFromEnd:
-			var collision = move_and_collide(velocity)
+		
+		velocity *= 0.98
+		if velocity.length() > 50:
+			var collision = move_and_collide(velocity * delta)
 			if collision != null:
 				endThrow()
 		else:
-			position = endPos
 			endThrow()

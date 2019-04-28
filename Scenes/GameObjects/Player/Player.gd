@@ -40,13 +40,11 @@ func attack():
 	if moduleQueue.is_empty():
 		return
 	
-	var viewportPos = get_global_transform_with_canvas().get_origin()
-	var mouseViewportPos = get_viewport().get_mouse_position()
-	var attackDir = (mouseViewportPos - viewportPos).normalized()
+	var attackDir = (get_global_mouse_position() - global_position).normalized()
 	
 	var module = moduleQueue.pop_module()
 	get_owner().add_child(module)
-	module.throwFromTo(position, get_global_mouse_position())
+	module.throwTowards(position, attackDir)
 
 func collectModule(moduleType: ModuleTypeBase):
 	moduleQueue.push_module_type(moduleType)
