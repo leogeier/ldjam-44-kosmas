@@ -1,4 +1,4 @@
-extends Node2D
+extends Object
 
 class_name ModuleTypeBase
 
