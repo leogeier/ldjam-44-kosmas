@@ -20,7 +20,7 @@ func Spawn():
 		var RaiderBorn = Raider.instance()
 		get_tree().get_root().add_child(RaiderBorn)
 		RaiderBorn.position = global_position
-		RaiderBorn.move_and_slide((Vector2(randi() % 5 + -5,randi() % 5 + -5) ))
+		#RaiderBorn.move_and_slide((Vector2(randi() % 5 + -5,randi() % 5 + -5) ))
 		return true
 	return false
 

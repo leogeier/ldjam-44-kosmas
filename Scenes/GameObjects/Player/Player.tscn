@@ -1,10 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/GameObjects/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/testSprite.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.02501, 8.1047 )
+extents = Vector2( 7.73257, 7.98921 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Up",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Down",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+} ]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 2
@@ -14,7 +42,13 @@ script = ExtResource( 1 )
 position = Vector2( 0.267433, 7.98921 )
 shape = SubResource( 1 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.345417, 0.155647 )
+frames = SubResource( 2 )
+animation = "Down"
+
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0.345417, 0.155647 )
 texture = ExtResource( 2 )
 
