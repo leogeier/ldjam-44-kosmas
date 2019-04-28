@@ -52,6 +52,7 @@ func collectModule(moduleType: ModuleTypeBase):
 
 func _physics_process(delta):
 	handle_input()
+	AnimationSelector(direction)
 	move_and_slide(direction.normalized() * speed)
 	
 	
@@ -61,3 +62,15 @@ func steal():
 	
 func is_collectable():
 	return true
+	
+func AnimationSelector(direction):
+	if(direction.abs().x > direction.abs().y):
+		$AnimatedSprite.play("RunningSide")
+		$AnimatedSprite.set_flip_h(true)
+		if(direction.x > 0):
+			$AnimatedSprite.set_flip_h(false)
+	else:
+		$AnimatedSprite.play("RunningBack")
+		if(direction.y > 0):
+			$AnimatedSprite.play("RunningFront")
+
