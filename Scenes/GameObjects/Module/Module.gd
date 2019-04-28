@@ -4,7 +4,9 @@ var moduleType: ModuleTypeBase
 
 var direction = Vector2()
 var velocity = Vector2()
-var speed = 350
+var startSpeed = 350
+var maxAngularSpeed = 0.2
+var startAngularSpeed = 0
 var reachedEnd = true
 onready var TweenNode = get_node("Tween")
 
@@ -20,9 +22,10 @@ func throwTowards(startPoint: Vector2, newDirection: Vector2):
 	position = startPoint
 	direction = newDirection
 	reachedEnd = false
-	velocity = direction * speed
+	velocity = direction * startSpeed
 	TweenNode.interpolate_property(self, "velocity", velocity, Vector2(0,0), 1, Tween.TRANS_SINE, Tween.EASE_OUT)
 	TweenNode.start()
+	startAngularSpeed = maxAngularSpeed * rand_range(0.8, 1.4)
 
 func endThrow():
 	reachedEnd = true
@@ -39,10 +42,11 @@ func collectBy(player):
 
 func _physics_process(delta):
 	if not reachedEnd:
-		if velocity.length() == 0:
+		var curSpeed = velocity.length()
+		if curSpeed == 0:
 			endThrow()
 		
-		rotate(0.1)
+		rotate(startAngularSpeed * (curSpeed / startSpeed))
 		
 		var collision = move_and_collide(velocity * delta)
 		if collision != null:
