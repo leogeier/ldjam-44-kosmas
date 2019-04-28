@@ -92,12 +92,16 @@ func _process(delta):
 		line.points = Path
 		get_tree().get_root().add_child(line)
 	AnimationSelector(direction)
-	move_and_slide((direction )  * Speed)
+	if direction != null:
+		move_and_slide((direction )  * Speed)
 	
 	pass
 	
 
 func AnimationSelector(direction):
+	if direction == null:
+		return
+	
 	if(CarryingModule == null):
 		if(direction.abs().x > direction.abs().y):
 			$AnimatedSprite.play("RunningSide")
