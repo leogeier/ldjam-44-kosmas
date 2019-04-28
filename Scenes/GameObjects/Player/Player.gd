@@ -7,6 +7,7 @@ var speed = 250
 var direction = Vector2()
 
 func _ready():
+	add_to_group("RaiderTargets")
 	pass # Replace with function body.
 
 func handle_input():
