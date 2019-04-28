@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var ModuleTypeBase = preload("res://Resources/Scripts/Modules/ModuleTypeBase.gd")
 var ModuleTypeParticles = preload("res://Resources/Scripts/Modules/ModuleTypeParticles.gd")
+var ModuleTypeSlow = preload("res://Resources/Scripts/Modules/ModuleTypeSlow.gd")
+var ModuleTypeFire = preload("res://Resources/Scripts/Modules/ModuleTypeFire.gd")
 var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 
 # Declare member variables here. Examples:
@@ -16,9 +18,9 @@ func _ready():
 	add_to_group("players")
 	add_to_group("RaiderTargets")
 	
-	moduleQueue.push_module_type(ModuleTypeParticles.new())
-	moduleQueue.push_module_type(ModuleTypeParticles.new())
-	moduleQueue.push_module_type(ModuleTypeParticles.new())
+	moduleQueue.push_module_type(ModuleTypeFire.new())
+	moduleQueue.push_module_type(ModuleTypeFire.new())
+	moduleQueue.push_module_type(ModuleTypeFire.new())
 	pass # Replace with function body.
 
 func handle_input():

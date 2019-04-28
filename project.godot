@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Resources/Scripts/Modules/ModuleTypeBase.gd"
 }, {
 "base": "Object",
+"class": "ModuleTypeFire",
+"language": "GDScript",
+"path": "res://Resources/Scripts/Modules/ModuleTypeFire.gd"
+}, {
+"base": "Object",
 "class": "ModuleTypeNamed",
 "language": "GDScript",
 "path": "res://Resources/Scripts/Modules/ModuleTypeNamed.gd"
@@ -28,12 +33,19 @@ _global_script_classes=[ {
 "class": "ModuleTypeParticles",
 "language": "GDScript",
 "path": "res://Resources/Scripts/Modules/ModuleTypeParticles.gd"
+}, {
+"base": "Object",
+"class": "ModuleTypeSlow",
+"language": "GDScript",
+"path": "res://Resources/Scripts/Modules/ModuleTypeSlow.gd"
 } ]
 _global_script_class_icons={
 "ModuleQueue": "",
 "ModuleTypeBase": "",
+"ModuleTypeFire": "",
 "ModuleTypeNamed": "",
-"ModuleTypeParticles": ""
+"ModuleTypeParticles": "",
+"ModuleTypeSlow": ""
 }
 
 [application]

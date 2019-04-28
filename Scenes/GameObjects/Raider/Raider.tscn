@@ -83,3 +83,5 @@ collision_mask = 4
 [node name="Collecting" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2( 1.00358, 1 )
 shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
