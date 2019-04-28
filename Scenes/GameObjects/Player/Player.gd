@@ -7,7 +7,7 @@ var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 250
+export (float) var speed = 250
 var direction = Vector2()
 
 var moduleQueue = ModuleQueue.new()
