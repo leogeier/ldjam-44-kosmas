@@ -17,4 +17,4 @@ func _on_Area2D_body_entered(body):
 	
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	if enemies.has(body):
-		body.Kill()
+		body.SlowFor(4, 0.2)
