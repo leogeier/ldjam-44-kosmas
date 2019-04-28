@@ -4,11 +4,14 @@ extends KinematicBody2D
 # var a = 2
 #var Position = Vector2(0,0)
 
+var Module = preload("res://Scenes/GameObjects/Module/Module.tscn")
+
 
 var Path
 var Goal
 
 var line = null
+export (bool) var ShowLine = false
 export (int) var StandardSpeed = 200
 export (int) var CarrySpeed = 120
 var TempSpeed
@@ -16,7 +19,8 @@ var Speed = StandardSpeed
 var TimeEffect = 0
 var SpeedFactor = 1
 
-var CarryingModule = false
+var CarryingModule = null
+
 
 export (float) var BounceForce = 0.01
 export (int) var BounceIntensity = 10000
@@ -25,6 +29,7 @@ export (int) var BounceIntensity = 10000
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var Path = null
+	add_to_group("enemy")
 	#show_on_top = true
 	#$Sprite.play("Idle")
 	pass # Replace with function body.
@@ -37,46 +42,78 @@ func CalculatePathLength(Path):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-
-	if(CarryingModule != null):
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		Kill()
+	
+	for i in get_node("Area2D").get_overlapping_bodies():
+		if (i.is_in_group("RaiderTargets")):		# && (CarryingModule == null)
+			if(i.is_collectable()):
+				if(CarryingModule == null):
+					CarryingModule = i.steal()
+					print(CarryingModule)
+				break
+			else:
+				Kill()
+	
+	
+	
+	var direction
+	if(CarryingModule != null):		#Running Away:
 		Speed = CarrySpeed * SpeedFactor
-		$AnimatedSprite.play("Idle")
+		$AnimatedSprite.play("Running")
 		var DistanceVector = position - get_tree().get_nodes_in_group("players")[0].position
-		var direction = (DistanceVector).normalized()
-	else:
+		direction = (DistanceVector).normalized()
+		ShowLine = false
+	else:							#Running For:
 		Speed = StandardSpeed * SpeedFactor
 		var GoalList = get_tree().get_nodes_in_group("RaiderTargets")
 		#print("Goal list:", GoalList)
 		var TempPath = null
 		var PathDistance = INF
+		var ItemGoal 
 		
 		for i in GoalList:
 			TempPath = get_tree().get_nodes_in_group("Navigation2D")[0].get_simple_path(position, i.position)
-			PathDistance
+			#PathDistance
 			var TempDistance = CalculatePathLength(TempPath)
-			if(PathDistance > TempDistance):
+			if Input.is_action_just_pressed("ui_cancel"):
+				print(i.name, " Position: ", i.position, " with Distance: ", TempDistance)
+			#print(i, " Item Distance: ",TempDistance)
+			if((PathDistance > TempDistance) && (i.is_collectable())):
 				Path = TempPath
 				PathDistance = TempDistance
+				ItemGoal = i
+		#print("closest Item:",ItemGoal)
 
 		if(Path.size() > 0):
-			var direction = (Path[1] - position).normalized()
+			direction = (Path[1] - position).normalized()
 			#AdaptSpeed()
 			$AnimatedSprite.play("Running")
-			if line != null:
-				get_tree().get_root().remove_child(line)
-			line = Line2D.new()
-			line.points = Path
-			get_tree().get_root().add_child(line)
+
 		else:
 			$AnimatedSprite.play("Idle")
 			#Idle
+	
+		
+	if(ShowLine):
+		get_tree().get_root().remove_child(line)
+		line = Line2D.new()
+		line.points = Path
+		get_tree().get_root().add_child(line)
 	move_and_slide((direction )  * Speed)
 	pass
 	
 func Kill():
+	#Dop Module here
+	if(CarryingModule != null):
+		var droppedModule = Module.instance()
+		droppedModule.set_module_type(CarryingModule)
+		get_tree().get_root().add_child(droppedModule)
+		droppedModule.position = global_position
 	hide()
-	#Drop Module
+	queue_free()
+
 	
 	
 func AdaptSpeed():
@@ -113,7 +150,8 @@ func GetNearestCollisionForce():
 #Time for how long the Effect is active
 #Factor changes Speed, 0.5 = half speed, 0 = stun
 func SlowFor(Time, Factor):
-	if(Speed < (StandardSpeed * Factor)):
+	if(SpeedFactor < Factor):
+		
 		return
 	SpeedFactor = Factor
 	TimeEffect = Time

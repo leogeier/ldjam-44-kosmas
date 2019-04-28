@@ -54,3 +54,9 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity * delta)
 		if collision != null:
 			endThrow()
+			
+func steal():
+	hide()
+	queue_free()
+	return get_module_type()
+	

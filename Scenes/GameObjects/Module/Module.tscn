@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/GameObjects/Module/Area2D.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.99658, 8.10483 )
+extents = Vector2( 7, 7 )
 
 [node name="Module" type="KinematicBody2D"]
 collision_layer = 4
