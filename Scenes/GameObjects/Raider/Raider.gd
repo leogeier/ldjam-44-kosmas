@@ -54,6 +54,7 @@ func _process(delta):
 					print(CarryingModule)
 				break
 			else:
+				print(i)
 				Kill()
 	
 	
@@ -105,7 +106,7 @@ func _process(delta):
 	pass
 	
 func Kill():
-	#Dop Module here
+	print("kill")
 	if(CarryingModule != null):
 		var droppedModule = Module.instance()
 		droppedModule.set_module_type(CarryingModule)

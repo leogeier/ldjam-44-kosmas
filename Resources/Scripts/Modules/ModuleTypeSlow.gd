@@ -12,7 +12,8 @@ func _init():
 func start_effect(moduleNode: Node2D):
 	slowEffectNode = EffectSlow.instance()
 	moduleNode.add_child(slowEffectNode)
-	slowEffectNode.activate()
+	slowEffectNode.connect("ready", slowEffectNode, "activate");
+#	slowEffectNode.activate()
 
 func stop_effect(moduleNode: Node2D):
 	moduleNode.remove_child(slowEffectNode)

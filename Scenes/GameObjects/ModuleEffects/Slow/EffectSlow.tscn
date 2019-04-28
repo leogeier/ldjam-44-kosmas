@@ -24,7 +24,10 @@ tangential_accel = 86.03
 scale_amount = 8.38
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
