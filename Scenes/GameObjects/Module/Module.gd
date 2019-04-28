@@ -26,6 +26,7 @@ func is_collectable():
 	return reachedEnd
 
 func collectBy(player):
+	moduleType.deactivateEffect()
 	player.collectModule(moduleType)
 	get_parent().remove_child(self)
 
