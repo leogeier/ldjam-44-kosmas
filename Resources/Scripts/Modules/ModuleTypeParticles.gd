@@ -6,6 +6,9 @@ class_name ModuleTypeParticles
 
 var particleEffectNode
 
+func _init():
+	spritePath = "res://Resources/Sprites/testModuleSprite2.png"
+
 func start_effect(moduleNode: Node2D):
 	particleEffectNode = EffectParticles.instance()
 	moduleNode.add_child(particleEffectNode)

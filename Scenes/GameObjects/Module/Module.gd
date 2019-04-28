@@ -9,6 +9,8 @@ var reachedEnd = true
 
 func set_module_type(newModuleType: ModuleTypeBase):
 	moduleType = newModuleType
+	print(moduleType.get_sprite_path())
+	get_node("Sprite").set_texture(load(moduleType.get_sprite_path()))
 
 func get_module_type():
 	return moduleType
