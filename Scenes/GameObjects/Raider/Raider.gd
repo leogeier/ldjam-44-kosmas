@@ -12,8 +12,8 @@ var Goal
 
 var line = null
 export (bool) var ShowLine = false
-export (int) var StandardSpeed = 200
-export (int) var CarrySpeed = 120
+export (int) var StandardSpeed = 70
+export (int) var CarrySpeed = 40
 var TempSpeed
 var Speed = StandardSpeed
 var TimeEffect = 0
@@ -45,7 +45,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		Kill()
-	
 	for i in get_node("Area2D").get_overlapping_bodies():
 		if (i.is_in_group("RaiderTargets")):		# && (CarryingModule == null)
 			if(i.is_collectable()):
@@ -56,12 +55,10 @@ func _process(delta):
 			else:
 				Kill()
 	
-	
-	
 	var direction
 	if(CarryingModule != null):		#Running Away:
 		Speed = CarrySpeed * SpeedFactor
-		$AnimatedSprite.play("Running")
+		#$AnimatedSprite.play("Running")
 		var DistanceVector = position - get_tree().get_nodes_in_group("players")[0].position
 		direction = (DistanceVector).normalized()
 		ShowLine = false
@@ -88,21 +85,39 @@ func _process(delta):
 
 		if(Path.size() > 0):
 			direction = (Path[1] - position).normalized()
-			#AdaptSpeed()
-			$AnimatedSprite.play("Running")
-
-		else:
-			$AnimatedSprite.play("Idle")
-			#Idle
-	
-		
 	if(ShowLine):
 		get_tree().get_root().remove_child(line)
 		line = Line2D.new()
 		line.points = Path
 		get_tree().get_root().add_child(line)
+	AnimationSelector(direction)
 	move_and_slide((direction )  * Speed)
+	
 	pass
+	
+
+func AnimationSelector(direction):
+	if(CarryingModule == null):
+		if(direction.abs().x > direction.abs().y):
+			$AnimatedSprite.play("RunningSide")
+			$AnimatedSprite.set_flip_h(true)
+			if(direction.x > 0):
+				$AnimatedSprite.set_flip_h(false)
+		else:
+			$AnimatedSprite.play("RunningBack")
+			if(direction.y > 0):
+				$AnimatedSprite.play("RunningFront")
+	else:
+		if(direction.abs().x > direction.abs().y):
+			$AnimatedSprite.play("RunningSidePack")
+			$AnimatedSprite.set_flip_h(true)
+			if(direction.x > 0):
+				$AnimatedSprite.set_flip_h(false)
+		else:
+			$AnimatedSprite.play("RunningBackPack")
+			if(direction.y > 0):
+				$AnimatedSprite.play("RunningFrontPack")
+		
 	
 func Kill():
 	#Dop Module here
@@ -156,6 +171,8 @@ func SlowFor(Time, Factor):
 	SpeedFactor = Factor
 	TimeEffect = Time
 	return
+
+
 	
 	
 	
