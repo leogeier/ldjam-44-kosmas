@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/testTilemap.png-051ee7691c3c14e33cfd42a81ffbca32.stex"
+path="res://.import/Berge.png-f157d571c1578b6651a39f96bba82e8b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Tilemaps/testTilemap.png"
-dest_files=[ "res://.import/testTilemap.png-051ee7691c3c14e33cfd42a81ffbca32.stex" ]
+source_file="res://Resources/Sprites/Berge.png"
+dest_files=[ "res://.import/Berge.png-f157d571c1578b6651a39f96bba82e8b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
