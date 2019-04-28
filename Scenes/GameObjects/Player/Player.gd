@@ -50,6 +50,7 @@ func attack():
 	module.throwTowards(position, attackDir)
 
 func collectModule(moduleType: ModuleTypeBase):
+	PlaySound()
 	moduleQueue.push_module_type(moduleType)
 
 func _physics_process(delta):
@@ -60,6 +61,7 @@ func _physics_process(delta):
 	
 #Henrik Functions
 func steal():
+	PlaySound()
 	return moduleQueue.pop_module_type()				#Only temporary
 	
 func is_collectable():
@@ -85,3 +87,10 @@ func AnimationSelector(direction):
 		if(direction.y > 0):
 			$AnimatedSprite.play("Down")
 
+
+func PlaySound():
+	var random = String(randi()%10+1)
+	var path = "Sounds/1"# + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
