@@ -1,13 +1,24 @@
 extends KinematicBody2D
 
+var ModuleTypeBase = preload("res://Resources/Scripts/Modules/ModuleTypeBase.gd")
+var ModuleTypeParticles = preload("res://Resources/Scripts/Modules/ModuleTypeParticles.gd")
+var ModuleQueue = preload("res://Resources/Scripts/ModuleQueue.gd")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 250
+export (float) var speed = 250
 var direction = Vector2()
 
+var moduleQueue = ModuleQueue.new()
+
 func _ready():
+	add_to_group("players")
 	add_to_group("RaiderTargets")
+	
+	moduleQueue.push_module_type(ModuleTypeParticles.new())
+	moduleQueue.push_module_type(ModuleTypeParticles.new())
+	moduleQueue.push_module_type(ModuleTypeParticles.new())
 	pass # Replace with function body.
 
 func handle_input():
@@ -27,10 +38,17 @@ func handle_input():
 		attack()
 
 func attack():
-	var viewportPos = get_global_transform_with_canvas().get_origin()
-	var mouseViewportPos = get_viewport().get_mouse_position()
-	var attackDir = (mouseViewportPos - viewportPos).normalized()
-	print(attackDir)
+	if moduleQueue.is_empty():
+		return
+	
+	var attackDir = (get_global_mouse_position() - global_position).normalized()
+	
+	var module = moduleQueue.pop_module()
+	get_owner().add_child(module)
+	module.throwTowards(position, attackDir)
+
+func collectModule(moduleType: ModuleTypeBase):
+	moduleQueue.push_module_type(moduleType)
 
 func _physics_process(delta):
 	handle_input()
