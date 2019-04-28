@@ -3,8 +3,8 @@
 [ext_resource path="res://Scenes/Navigation2D.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Tilemaps/testTilemap.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/GameObjects/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/GameObjects/GamePlay/Spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/GameObjects/GamePlay/Difficulty Manager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/GameObjects/GamePlay/Difficulty Manager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GameObjects/GamePlay/Spawner.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,16 +20,17 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 373.404, 201.911 )
 
-[node name="Spawner" parent="." instance=ExtResource( 4 )]
+[node name="Difficulty Manager" parent="." instance=ExtResource( 4 )]
+
+[node name="Spawner" parent="Difficulty Manager" instance=ExtResource( 5 )]
 position = Vector2( 31.5564, 29.1166 )
 
-[node name="Difficulty Manager" parent="." instance=ExtResource( 5 )]
-
-[node name="Spawner2" parent="." instance=ExtResource( 4 )]
+[node name="Spawner2" parent="Difficulty Manager" instance=ExtResource( 5 )]
 position = Vector2( 431.008, 32.8614 )
 
-[node name="Spawner3" parent="." instance=ExtResource( 4 )]
+[node name="Spawner3" parent="Difficulty Manager" instance=ExtResource( 5 )]
 position = Vector2( 47.0695, 283.701 )
 
-[node name="Spawner4" parent="." instance=ExtResource( 4 )]
+[node name="Spawner4" parent="Difficulty Manager" instance=ExtResource( 5 )]
 position = Vector2( 444.09, 283.701 )
+

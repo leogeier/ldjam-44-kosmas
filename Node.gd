@@ -22,8 +22,8 @@ func _ready():
 func _process(delta):
 	if((StartRaiders > 0) && (TimePassed > 0.5)):
 		TimePassed = 0
-		StartRaiders = StartRaiders - 1
-		Spawn()
+		if Spawn():
+			StartRaiders = StartRaiders - 1
 			#print("Spawn the Spawn!")
 	TimePassed = TimePassed + delta
 	GlobalTime = GlobalTime + delta
@@ -35,12 +35,17 @@ func _process(delta):
 		Spawn()
 
 
+# Returns true if a raider was spawned
 func Spawn():
 	var Spawners = get_tree().get_nodes_in_group("Spawners")
-	Spawners.shuffle()
-	while(Spawners[0].Visible()):
-		Spawners.shuffle()
-	Spawners[0].Spawn()
-
-
-	pass
+	var invisibleSpawners = []
+	for spawner in Spawners:
+		if !spawner.Visible():
+			invisibleSpawners.push_back(spawner)
+	
+	if invisibleSpawners.empty():
+		return false
+	
+	invisibleSpawners[randi() % invisibleSpawners.size()].Spawn()
+	
+	return true
