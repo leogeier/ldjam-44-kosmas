@@ -66,13 +66,16 @@ func is_collectable():
 	return true
 	
 func AnimationSelector(direction):
+	if(direction.length() < 0.01):
+		#$AnimatedSprite.play("Down")
+		return
 	if(direction.abs().x > direction.abs().y):
-		$AnimatedSprite.play("RunningSide")
+		$AnimatedSprite.play("Side")
 		$AnimatedSprite.set_flip_h(true)
 		if(direction.x > 0):
 			$AnimatedSprite.set_flip_h(false)
 	else:
-		$AnimatedSprite.play("RunningBack")
+		$AnimatedSprite.play("Up")
 		if(direction.y > 0):
-			$AnimatedSprite.play("RunningFront")
+			$AnimatedSprite.play("Down")
 
